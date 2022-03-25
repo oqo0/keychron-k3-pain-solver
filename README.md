@@ -1,2 +1,2 @@
-# keychron-k2-pain-solver
-Keychron K3 fix (RedHat \ Fedora)
+# Keychron K3 keyboard problems fix for RedHat \ Fedora  
+
