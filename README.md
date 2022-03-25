@@ -18,6 +18,6 @@ Run the script as root
 ```
 sudo ./execute.sh
 ```  
-
- > - Test 123
+  
+  
  > - Inspiration from ->  [kurgol/keychron](https://github.com/kurgol/keychron) (k2, k6)
