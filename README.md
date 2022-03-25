@@ -1,5 +1,5 @@
 # Keychron K3 keyboard problems fix for RedHat \ Fedora  
- > Inspiration from ->  [kurgol/keychron](https://github.com/kurgol/keychron) (k2, k6)  
+ > More info from ->  [kurgol/keychron](https://github.com/kurgol/keychron) (k2, k6)  
 ### Features  
 - Fn + F-keys fix
 - Bluetooth slow connection fix
