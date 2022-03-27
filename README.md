@@ -4,7 +4,6 @@
 - Fn + F-keys fix
 - Bluetooth slow connection fix
 - Bluetooth reconnect fix
-- Bluetooth after waking up from sleep fix
 
 ### Using the script
 Clone this repo  
