@@ -1,7 +1,7 @@
 # Keychron K3 keyboard problems fix for RedHat-based Linux Distributions  
  > More info from ->  [kurgol/keychron](https://github.com/kurgol/keychron) (k2, k6)  
 ### Features  
-- Fn + F-keys fix
+- Fn + F keys fix
 - Bluetooth slow connection fix
 - Bluetooth reconnect fix
 
