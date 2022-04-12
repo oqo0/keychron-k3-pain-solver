@@ -4,7 +4,7 @@
 # fn + f keys fix
 echo ""
 read -p "Do you want to perform fn + f keys fix? [y/N] " -n 1 -r
-if [[ ! $REPLY =~ ^[Yy]$ ]]
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
 FNMODE=""
   while [[ $((FNMODE)) != $FNMODE ]]
@@ -16,7 +16,6 @@ FNMODE=""
     echo "Select one option:"
     read FNMODE
   done
-
   echo "options hid_apple fnmode=$FNMODE" | sudo tee /etc/modprobe.d/hid_apple.conf
   sudo dracut --regenerate-all
 fi
@@ -25,7 +24,7 @@ fi
 # keyboard won't reconnect after sleep fix
 echo ""
 read -p "Do you want to perform keyboard reconnect after sleep fix? [y/N] " -n 1 -r
-if [[ ! $REPLY =~ ^[Yy]$ ]]
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
   echo "options btusb enable_autosuspend=n" | sudo tee /etc/modprobe.d/btusb_disable_autosuspend.conf
   sudo update-initramfs -u
@@ -38,7 +37,7 @@ fi
 # bluetooth fix
 echo ""
 read -p "Do you want to perform bluetooth fix? [y/N] " -n 1 -r
-if [[ ! $REPLY =~ ^[Yy]$ ]]
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
   CONFIG_FILE='/etc/bluetooth/main.conf'
   sed -c -i "s/\('FastConnectable' *= *\).*/\1'true'/" $CONFIG_FILE
@@ -52,17 +51,20 @@ echo ""
 read -p "Do you want to perform bluetooth after waking up from sleep fix? [y/N] " -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-  sudo tee /lib/systemd/system-sleep/bt << EOT
-  #!/bin/sh
-  case $1 in
-    post)
-      modprobe -r btusb
-      sleep 1
-      service bluetooth restart
-      sleep 1
-      modprobe btusb
-      ;;
-  esac
-  EOT
-  sudo chmod +x /lib/systemd/system-sleep/bt
+  echo ""
+  exit 0
 fi
+
+echo ""
+sudo tee /lib/systemd/system-sleep/bt << EOT
+case $1 in
+  post)
+  modprobe -r btusb
+  sleep 1
+  service bluetooth restart
+  sleep 1
+  modprobe btusb
+  ;;
+esac
+EOT
+sudo chmod +x /lib/systemd/system-sleep/bt
