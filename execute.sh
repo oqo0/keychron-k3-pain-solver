@@ -27,7 +27,7 @@ read -p "Do you want to perform keyboard reconnect after sleep fix? [y/N] " -n 1
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   echo "options btusb enable_autosuspend=n" | sudo tee /etc/modprobe.d/btusb_disable_autosuspend.conf
-  sudo update-initramfs -u
+  sudo dracut --regenerate-all
   sudo modprobe -r btusb
   sudo systemctl restart bluetooth
   sudo modprobe btusb
